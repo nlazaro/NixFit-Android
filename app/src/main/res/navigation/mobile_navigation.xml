@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.nlazaro.nixfit_android.ui.home.HomeFragment"
+        android:name="com.nlazaro.nixfit_android.fragments.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.nlazaro.nixfit_android.ui.dashboard.DashboardFragment"
+        android:name="com.nlazaro.nixfit_android.fragments.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.nlazaro.nixfit_android.ui.profile.ProfileFragment"
+        android:name="com.nlazaro.nixfit_android.fragments.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
