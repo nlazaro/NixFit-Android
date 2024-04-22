@@ -51,4 +51,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // -- third-party libraries -- //
+    implementation(libs.zxing.android.embedded)
+    implementation(libs.okhttp)
+    implementation(libs.glide)
+    // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
+    annotationProcessor(libs.compiler)
+    implementation(libs.retrofit)
+    implementation(libs.gson)
 }
