@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         // Sets default selection
         bottomNavigationView.selectedItemId = R.id.navigation_home
 
-        // -- end of default --
+        // -- end of setup actions --
         barcodeLauncher = registerForActivityResult(ScanContract()) {
                 result: ScanIntentResult ->
             if (result.contents == null) {
