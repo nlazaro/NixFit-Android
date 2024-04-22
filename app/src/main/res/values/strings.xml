@@ -4,4 +4,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="barcode_scanner_icon">Barcode scanner icon</string>
+    <string name="profile">Profile</string>
 </resources>
