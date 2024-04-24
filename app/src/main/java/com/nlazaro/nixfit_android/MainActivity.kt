@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener { result ->
                     val barcodeNumber: String? = result.rawValue
                     Toast.makeText(this, "$barcodeNumber", Toast.LENGTH_LONG).show()
+                    // put your code here
+
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(this, "Scan failed: ${exception.message}", Toast.LENGTH_LONG).show()
