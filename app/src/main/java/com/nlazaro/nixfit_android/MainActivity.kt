@@ -3,28 +3,27 @@ package com.nlazaro.nixfit_android
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.journeyapps.barcodescanner.ScanContract
-import com.journeyapps.barcodescanner.ScanIntentResult
-import com.journeyapps.barcodescanner.ScanOptions
+import com.google.mlkit.vision.barcode.common.Barcode
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
+import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import com.nlazaro.nixfit_android.fragments.DashboardFragment
 import com.nlazaro.nixfit_android.fragments.HomeFragment
 import com.nlazaro.nixfit_android.fragments.ProfileFragment
 
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var barcodeLauncher: ActivityResultLauncher<ScanOptions>
+    private lateinit var fabBarcodeScanner: FloatingActionButton
+    private lateinit var barCodeScanner: GmsBarcodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         val fragmentManager: FragmentManager = supportFragmentManager
@@ -44,28 +43,28 @@ class MainActivity : AppCompatActivity() {
         }
         // Sets default selection
         bottomNavigationView.selectedItemId = R.id.navigation_home
-
         // -- end of setup actions --
 
-        barcodeLauncher = registerForActivityResult(ScanContract()) {
-                result: ScanIntentResult ->
-            if (result.contents == null) {
-                Toast.makeText(this@MainActivity, "Cancelled", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Scanned: " + result.contents,
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-        val fabBarcodeScanner = findViewById<FloatingActionButton>(R.id.fabBarcodeScanner)
-        fabBarcodeScanner.setOnClickListener{
-            Log.d("MainActivity", "Barcode button clicked!")
-            barcodeLauncher.launch(ScanOptions()
-                .setPrompt("Scan a barcode")
-                .setBeepEnabled(false)
-                .setOrientationLocked(false))
+        // setups barcode scanner options
+        val options = GmsBarcodeScannerOptions.Builder()
+            .setBarcodeFormats(
+                Barcode.FORMAT_EAN_8,
+                Barcode.FORMAT_EAN_13,
+                Barcode.FORMAT_UPC_A,
+                Barcode.FORMAT_UPC_E)
+            .allowManualInput()
+            .build()
+        barCodeScanner = GmsBarcodeScanning.getClient(this, options)
+        fabBarcodeScanner = findViewById(R.id.fabBarcodeScanner)
+        fabBarcodeScanner.setOnClickListener {
+            barCodeScanner.startScan()
+                .addOnSuccessListener { result ->
+                    val barcodeNumber: String? = result.rawValue
+                    Toast.makeText(this, "$barcodeNumber", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, "Scan failed: ${exception.message}", Toast.LENGTH_LONG).show()
+                }
         }
 
     }

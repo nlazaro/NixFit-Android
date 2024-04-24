@@ -29,6 +29,9 @@
             android:screenOrientation="unspecified"
             tools:replace="screenOrientation"
             tools:ignore="DiscouragedApi" />
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode_ui,barcode"/>
     </application>
 
 </manifest>
