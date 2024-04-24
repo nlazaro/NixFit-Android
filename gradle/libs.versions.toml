@@ -14,7 +14,7 @@ lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
-okhttp = "4.9.0"
+okhttp = "4.12.0"
 retrofit = "2.9.0"
 zxingAndroidEmbedded = "4.3.0"
 

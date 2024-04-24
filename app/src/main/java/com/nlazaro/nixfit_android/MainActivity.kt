@@ -52,11 +52,14 @@ class MainActivity : AppCompatActivity() {
             if (result.contents == null) {
                 Toast.makeText(this@MainActivity, "Cancelled", Toast.LENGTH_LONG).show()
             } else {
+                val client: APIClient = APIClient()
+                val response:String = client.GetBardcodeData(result.contents)
                 Toast.makeText(
                     this@MainActivity,
                     "Scanned: " + result.contents,
                     Toast.LENGTH_LONG
                 ).show()
+
             }
         }
         val fabBarcodeScanner = findViewById<FloatingActionButton>(R.id.fabBarcodeScanner)
