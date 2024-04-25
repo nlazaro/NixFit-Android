@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.nlazaro.nixfit_android.R
 
 class HomeFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,5 +21,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // logic
+
     }
 }
