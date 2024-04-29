@@ -1,8 +1,7 @@
 # NixFit
 
 ### Description
-- A calorie tracking app with a functional barcode scanner & contains food nutirional data based on the openFoodFacts API
-- **Category:* Health/Fitness*
+- A calorie tracking app with a functional barcode scanner that can retrive food nutritional data based on the openFoodFacts API. Users are allowed to track and save this information as well.
 
 ### App Walkthough
 <img src="" width=250><br>
