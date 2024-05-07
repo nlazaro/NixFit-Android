@@ -1,6 +1,10 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp") version "1.9.23-1.0.20"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
 }
 
 android {
@@ -18,6 +22,18 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        // Loads value from apiKeys.properties file
+        val apiKeysFile = project.rootProject.file("apiKeys.properties")
+        val properties = Properties()
+        properties.load(apiKeysFile.inputStream())
+        /* EXAMPLE FORMAT
+        val nyTimesApiKey = properties.getProperty("NYTIMES_API_KEY") ?: ""
+        buildConfigField(
+            type = "String",
+            name = "NYTIMES_API_KEY",
+            value = nyTimesApiKey
+        )
+        */
     }
 
     buildTypes {
@@ -38,6 +54,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -66,4 +83,20 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.scalars)
+    // Kotlin serialization
+    implementation(libs.kotlinx.serialization.json)
+    // Google code scanner
+    implementation(libs.play.services.code.scanner)
+    // Testing
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    // Coil
+    implementation(libs.coil.compose)
+    // Room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }
