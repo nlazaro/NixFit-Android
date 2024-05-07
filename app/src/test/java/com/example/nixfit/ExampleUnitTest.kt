@@ -1,4 +1,4 @@
-package com.nlazaro.nixfit_android
+package com.example.nixfit
 
 import org.junit.Test
 
