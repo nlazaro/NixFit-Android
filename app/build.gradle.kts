@@ -23,6 +23,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
         // Loads value from apiKeys.properties file
         val apiKeysFile = project.rootProject.file("apiKeys.properties")
         val properties = Properties()
@@ -58,7 +59,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -79,6 +80,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.play.services.mlkit.barcode.scanning)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -96,15 +98,14 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
     // Dagger Hilt
-    implementation(libs.hilt.android.v244)
+    implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
-    implementation(libs.hilt.navigation.compose)
     // Arrow
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
     // Google ML barcode scanner
     implementation(libs.play.services.code.scanner)
-    // Datastore
+    // Data store
     implementation(libs.androidx.datastore.preferences)
     // Compose foundation
     implementation(libs.androidx.foundation)

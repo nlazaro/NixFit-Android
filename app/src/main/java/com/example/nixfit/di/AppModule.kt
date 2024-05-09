@@ -5,12 +5,13 @@ import com.example.nixfit.util.Constants.OPENFOODFACTS_API_URL
 import com.google.android.datatransport.runtime.dagger.Module
 import com.google.android.datatransport.runtime.dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@InstallIn
-@Module
+//@InstallIn(SingletonComponent::class)
+//@Module
 object AppModule {
     @Provides
     @Singleton
