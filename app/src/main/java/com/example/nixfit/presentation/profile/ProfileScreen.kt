@@ -1,4 +1,4 @@
-package com.example.nixfit.ui.screens.profile
+package com.example.nixfit.presentation.profile
 
 import androidx.compose.runtime.Composable
 

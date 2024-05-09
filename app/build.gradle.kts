@@ -3,7 +3,8 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -86,17 +87,21 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     // Retrofit
     implementation(libs.retrofit)
-    implementation(libs.converter.scalars)
-    // Kotlin serialization
-    implementation(libs.kotlinx.serialization.json)
-    // Google code scanner
-    implementation(libs.play.services.code.scanner)
+    implementation(libs.converter.gson)
     // Testing
-    testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     // Coil
     implementation(libs.coil.compose)
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    // Dagger Hilt
+    implementation(libs.hilt.android.v244)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.navigation.compose)
+    // Arrow
+    implementation(libs.arrow.core)
+    implementation(libs.arrow.fx.coroutines)
+    // Google ML barcode scanner
+    implementation(libs.play.services.code.scanner)
 }
