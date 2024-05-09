@@ -3,4 +3,6 @@
     <string name="home_screen">Home</string>
     <string name="profile_screen">Profile</string>
     <string name="back_button">Back</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
 </resources>

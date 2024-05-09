@@ -1,4 +1,8 @@
 package com.example.nixfit.ui.screens.profile
 
-class ProfileScreen {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun ProfileScreen(){
+
 }
