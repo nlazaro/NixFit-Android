@@ -1,5 +1,5 @@
 package com.example.nixfit.util
 
 object Constants {
-    const val BASE_URL = ""
+    const val OPENFOODFACTS_API_URL = "https://world.openfoodfacts.net/api/v2/product/"
 }

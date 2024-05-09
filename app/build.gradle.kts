@@ -3,8 +3,9 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -88,20 +89,32 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    // Testing
-    testImplementation(libs.kotlinx.coroutines.test)
     // Coil
     implementation(libs.coil.compose)
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
     // Dagger Hilt
     implementation(libs.hilt.android.v244)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
     // Arrow
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
     // Google ML barcode scanner
     implementation(libs.play.services.code.scanner)
+    // Datastore
+    implementation(libs.androidx.datastore.preferences)
+    // Compose foundation
+    implementation(libs.androidx.foundation)
+    // Accompanist
+    implementation(libs.accompanist.systemuicontroller)
+    // Paging 3
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+    // Glide
+    implementation(libs.glide)
+    // Glide integration // Skip this if you don't want to use integration libraries or configure Glide.
+    annotationProcessor(libs.compiler)
 }
