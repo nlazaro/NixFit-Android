@@ -37,7 +37,6 @@ import com.example.nixfit.R
 import com.example.nixfit.presentation.common.NavBackButton
 import com.example.nixfit.presentation.common.NavButton
 import com.example.nixfit.ui.theme.NixFitTheme
-import com.example.nixfit.ui.theme.WhiteGray
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -150,7 +149,7 @@ fun OnBoardingPageContent (
                 .padding(horizontal = 32.dp),
             text = page.description,
             style = MaterialTheme.typography.bodyMedium,
-            color = WhiteGray
+            color = MaterialTheme.colorScheme.secondary
         )
     }
 }
