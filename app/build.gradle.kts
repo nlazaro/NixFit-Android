@@ -118,4 +118,6 @@ dependencies {
     implementation(libs.glide)
     // Glide integration // Skip this if you don't want to use integration libraries or configure Glide.
     annotationProcessor(libs.compiler)
+    // Splash
+    implementation(libs.androidx.core.splashscreen)
 }

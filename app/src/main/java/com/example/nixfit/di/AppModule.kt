@@ -10,16 +10,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+
 //@InstallIn(SingletonComponent::class)
 //@Module
-object AppModule {
-    @Provides
-    @Singleton
-    fun provideFoodsApi() : FoodsApi {
-        return Retrofit.Builder()
-            .baseUrl(OPENFOODFACTS_API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(FoodsApi::class.java)
-    }
-}
+//object AppModule {
+//    @Provides
+//    @Singleton
+//    fun provideFoodsApi() : FoodsApi {
+//        return Retrofit.Builder()
+//            .baseUrl(OPENFOODFACTS_API_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//            .create(FoodsApi::class.java)
+//    }
+//}
