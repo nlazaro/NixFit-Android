@@ -15,21 +15,23 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.nixfit.domain.manager.AppEntryUseCases
 import com.example.nixfit.presentation.onboarding.OnBoardingScreen
+import com.example.nixfit.presentation.onboarding.OnBoardingViewModel
 import com.example.nixfit.ui.theme.NixFitTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.hilt.navigation.compose.hiltViewModel
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @Inject
-    lateinit var appEntryUseCases : AppEntryUseCases
+    lateinit var useCases : AppEntryUseCases
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen()
-        lifecycleScope.launch{
-            appEntryUseCases.readAppEntry().collect{
+        lifecycleScope.launch {
+            useCases.readAppEntry().collect{
                 Log.d("Test", it.toString())
             }
         }
@@ -40,17 +42,13 @@ class MainActivity : ComponentActivity() {
                         color = MaterialTheme.colorScheme.background
                     ))
                 {
-                    OnBoardingScreen()
+                    val viewModel : OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(
+                        event = viewModel::onEvent
+                    )
                 }
             }
         }
     }
 }
 
-@Preview
-@Composable
-fun DefaultPreview() {
-    NixFitTheme {
-        OnBoardingScreen()
-    }
-}

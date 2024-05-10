@@ -41,7 +41,9 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen(){
+fun OnBoardingScreen(
+    event: (OnBoardingEvent) -> Unit
+){
     Box(
         modifier = Modifier.fillMaxSize()
     ){
@@ -98,10 +100,11 @@ fun OnBoardingScreen(){
                     text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if (pagerState.currentPage == 3){
+                            if (pagerState.currentPage == 0){
                             // Navigate to the main screen and save a value in datastore preferences
-                            // TODO
+                            event(OnBoardingEvent.SaveAppEntry)
                             }
+                            // Not used currently
                             else{
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1
@@ -162,12 +165,4 @@ fun MadeWithLoveText() {
         fontSize = 14.sp,
         color = MaterialTheme.colorScheme.secondary
     )
-}
-@Preview(showBackground = true)
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun OnBoardingPagePreview(){
-    NixFitTheme {
-        OnBoardingScreen()
-    }
 }

@@ -100,6 +100,7 @@ dependencies {
     // Dagger Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     // Arrow
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
