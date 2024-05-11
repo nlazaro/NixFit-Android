@@ -11,7 +11,7 @@ import javax.inject.Inject
 class FoodsRepositoryImpl(
     private val foodsApi: FoodsApi
 ): FoodsRepository {
-    override fun getFoods() {
-        return List.flow
-    }
+//    override fun getFoods() {
+//        return null
+//    }
 }

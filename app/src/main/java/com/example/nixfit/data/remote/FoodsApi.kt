@@ -14,10 +14,4 @@ interface FoodsApi {
         @Query("serving_size") servingSize: String,
         @Query("serving_quantity") servingQuantity: String,
     ) : FoodResponse
-
 }
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(GsonConverterFactory.create())
-    .baseUrl(Constants.OPENFOODFACTS_API_URL)
-    .build()

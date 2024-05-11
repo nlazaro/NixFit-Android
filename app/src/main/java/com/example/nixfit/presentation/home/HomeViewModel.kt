@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//@HiltViewModel
-//class HomeViewModel @Inject constructor (
-//    private val foodsRepository: FoodsRepository
-//) : ViewModel() {
-//    private val _state = MutableStateFlow(HomeViewState())
-//    val state = _state.asStateFlow()
-//
-//
-//}
+@HiltViewModel
+class HomeViewModel @Inject constructor (
+    private val foodsRepository: FoodsRepository
+) : ViewModel() {
+    private val _state = MutableStateFlow(HomeViewState())
+    val state = _state.asStateFlow()
+
+
+}
