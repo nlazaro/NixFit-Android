@@ -1,14 +1,17 @@
 package com.example.nixfit.data.repository
 
-import arrow.core.Either
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.nixfit.data.remote.FoodsApi
-import com.example.nixfit.domain.model.Food
+import com.example.nixfit.domain.repository.FoodsRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-//class FoodsRepositoryImpl @Inject constructor(
-//    private val foodsApi: FoodsApi
-//): FoodsRepository {
-//    override suspend fun getFoods(): Either<Throwable, List<Food>> {
-//        return Either.Right(foodsApi.getFoods())
-//    }
-//}
+class FoodsRepositoryImpl(
+    private val foodsApi: FoodsApi
+): FoodsRepository {
+    override fun getFoods() {
+        return List.flow
+    }
+}

@@ -1,9 +1,9 @@
 package com.example.nixfit.domain.repository
 
-import arrow.core.Either
-import com.example.nixfit.domain.model.Food
+import androidx.paging.PagingData
+import com.example.nixfit.domain.model.Product
+import kotlinx.coroutines.flow.Flow
 
-//interface FoodsRepository {
-//
-//    suspend fun getFoods(): Either<Throwable, List<Food>>
-//}
+interface FoodsRepository {
+    suspend fun getFoods() : Flow<List<Product>>
+}
