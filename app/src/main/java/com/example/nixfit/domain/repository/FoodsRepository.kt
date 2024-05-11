@@ -1,9 +1,7 @@
 package com.example.nixfit.domain.repository
 
-import androidx.paging.PagingData
-import com.example.nixfit.domain.model.Product
-import kotlinx.coroutines.flow.Flow
+import com.example.nixfit.data.remote.FoodsResponse
 
 interface FoodsRepository {
-    suspend fun getFoods() : Product
+    suspend fun getFoods(barcode: Int, fields: String) : FoodsResponse
 }

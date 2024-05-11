@@ -1,17 +1,13 @@
 package com.example.nixfit.data.remote
 
-import com.example.nixfit.util.Constants
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface FoodsApi {
-    @GET("product")
+    @GET("product/{barcode}")
     suspend fun getFoods(
-        @Query("product_name") productName: String,
-        @Query("nutriments") nutriments: String,
-        @Query("serving_size") servingSize: String,
-        @Query("serving_quantity") servingQuantity: String,
-    ) : FoodResponse
+        @Path("barcode") barcode: Int,
+        @Query("fields") fields: String
+    ) : FoodsResponse
 }
