@@ -3,14 +3,14 @@ package com.example.nixfit.di
 import android.app.Application
 import com.example.nixfit.data.manager.LocalUserManagerImpl
 import com.example.nixfit.data.remote.FoodsApi
-import com.example.nixfit.domain.manager.AppEntryUseCases
+import com.example.nixfit.domain.usecases.appentry.AppEntryUseCases
 import com.example.nixfit.domain.manager.LocalUserManager
-import com.example.nixfit.domain.manager.ReadAppEntry
-import com.example.nixfit.domain.manager.SaveAppEntry
-import com.example.nixfit.domain.repository.FoodsRepository
 import com.example.nixfit.data.repository.FoodsRepositoryImpl
-import com.example.nixfit.domain.manager.GetFoods
-import com.example.nixfit.domain.repository.FoodUseCases
+import com.example.nixfit.domain.usecases.appentry.ReadAppEntry
+import com.example.nixfit.domain.usecases.appentry.SaveAppEntry
+import com.example.nixfit.domain.repository.FoodsRepository
+import com.example.nixfit.domain.usecases.GetFoods
+import com.example.nixfit.domain.usecases.FoodUseCases
 import com.example.nixfit.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -50,9 +50,9 @@ object AppModule {
     @Provides
     @Singleton
     fun providesFoodsRepository(
-        api: FoodsApi
+        foodsApi: FoodsApi
     ): FoodsRepository {
-        return FoodsRepositoryImpl(api)
+        return FoodsRepositoryImpl(foodsApi)
     }
 
     @Provides

@@ -2,7 +2,7 @@ package com.example.nixfit.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nixfit.domain.manager.AppEntryUseCases
+import com.example.nixfit.domain.usecases.appentry.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nixfit.domain.manager.AppEntryUseCases
+import com.example.nixfit.domain.usecases.appentry.AppEntryUseCases
 import com.example.nixfit.presentation.nvgraph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

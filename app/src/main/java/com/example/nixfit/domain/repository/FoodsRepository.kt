@@ -5,5 +5,5 @@ import com.example.nixfit.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 
 interface FoodsRepository {
-    suspend fun getFoods() : Flow<List<Product>>
+    suspend fun getFoods() : Product
 }

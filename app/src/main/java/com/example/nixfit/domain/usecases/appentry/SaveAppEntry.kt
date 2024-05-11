@@ -1,4 +1,6 @@
-package com.example.nixfit.domain.manager
+package com.example.nixfit.domain.usecases.appentry
+
+import com.example.nixfit.domain.manager.LocalUserManager
 
 class SaveAppEntry (
     private val localUserManager : LocalUserManager
