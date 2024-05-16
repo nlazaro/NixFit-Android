@@ -2,15 +2,12 @@ package com.example.nixfit.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nixfit.domain.usecases.appentry.AppEntryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OnBoardingViewModel @Inject constructor(
-    private val appEntryUseCases: AppEntryUseCases
-): ViewModel(){
+class OnBoardingViewModel @Inject constructor() : ViewModel(){
     fun onEvent(event: OnBoardingEvent){
         when(event){
             is OnBoardingEvent.SaveAppEntry -> {
@@ -20,7 +17,7 @@ class OnBoardingViewModel @Inject constructor(
     }
     private fun saveAppEntry(){
         viewModelScope.launch {
-            appEntryUseCases.saveAppEntry()
+            saveAppEntry()
         }
     }
 }

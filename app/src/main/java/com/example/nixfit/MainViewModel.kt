@@ -1,11 +1,10 @@
 package com.example.nixfit
 
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nixfit.domain.usecases.appentry.AppEntryUseCases
+import com.example.nixfit.domain.usecases.appentry.ReadAppEntry
 import com.example.nixfit.presentation.nvgraph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -15,22 +14,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val appEntryUseCases : AppEntryUseCases
+    private val readAppEntry : ReadAppEntry,
 ): ViewModel() {
-    var splashCondition by mutableStateOf(true)
-        private set
-    var startDestination by mutableStateOf(Route.AppStartNavigation.route)
-        private set
+    private val _splashCondition = mutableStateOf(true)
+    val splashCondition: State<Boolean> = _splashCondition
 
+    private val _startDestination = mutableStateOf(Route.AppStartNavigation.route)
+    val startDestination: State<String> = _startDestination
     init{
-        appEntryUseCases.readAppEntry().onEach {homeScreen ->
-            startDestination = if (homeScreen){
-                Route.TempNavigation.route
-            } else{
-                Route.AppStartNavigation.route
+        readAppEntry().onEach {startLocation ->
+            if (startLocation){
+                _startDestination.value = Route.AppMainNavigation.route
+            }
+            else{
+                _startDestination.value = Route.AppStartNavigation.route
             }
             delay(300)
-                splashCondition = false
+                _splashCondition.value = false
         }.launchIn(viewModelScope)
     }
 }

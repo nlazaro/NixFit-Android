@@ -1,16 +1,9 @@
 package com.example.nixfit.di
 
-import android.app.Application
-import com.example.nixfit.data.manager.LocalUserManagerImpl
 import com.example.nixfit.data.remote.FoodsApi
-import com.example.nixfit.domain.usecases.appentry.AppEntryUseCases
-import com.example.nixfit.domain.manager.LocalUserManager
-import com.example.nixfit.data.repository.FoodsRepositoryImpl
-import com.example.nixfit.domain.usecases.appentry.ReadAppEntry
-import com.example.nixfit.domain.usecases.appentry.SaveAppEntry
 import com.example.nixfit.domain.repository.FoodsRepository
+import com.example.nixfit.domain.usecases.FoodsUseCases
 import com.example.nixfit.domain.usecases.GetFoods
-import com.example.nixfit.domain.usecases.FoodUseCases
 import com.example.nixfit.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -25,20 +18,6 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideLocalUserManager(
-        application : Application
-    ): LocalUserManager = LocalUserManagerImpl(application)
-    @Provides
-    @Singleton
-    fun provideAppEntryUseCases(
-        localUserManager : LocalUserManager
-    ): AppEntryUseCases = AppEntryUseCases(
-            readAppEntry = ReadAppEntry(localUserManager),
-            saveAppEntry = SaveAppEntry(localUserManager)
-    )
-
-    @Provides
-    @Singleton
     fun providesFoodsApi(): FoodsApi {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -49,20 +28,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesFoodsRepository(
-        foodsApi: FoodsApi
-    ): FoodsRepository {
-        return FoodsRepositoryImpl(foodsApi)
-    }
-
-    @Provides
-    @Singleton
     fun providesFoodsUseCases(
         foodsRepository: FoodsRepository
-    ): FoodUseCases {
-        return FoodUseCases(
-            getFoods = GetFoods(foodsRepository)
-        )
+    ): FoodsUseCases {
+        return FoodsUseCases(
+            getFoods = GetFoods(foodsRepository))
     }
-
 }

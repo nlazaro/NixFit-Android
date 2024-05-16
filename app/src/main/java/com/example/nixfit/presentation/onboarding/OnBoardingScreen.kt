@@ -1,6 +1,5 @@
 package com.example.nixfit.presentation.onboarding
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,7 +35,6 @@ import androidx.compose.ui.unit.sp
 import com.example.nixfit.R
 import com.example.nixfit.presentation.common.NavBackButton
 import com.example.nixfit.presentation.common.NavButton
-import com.example.nixfit.ui.theme.NixFitTheme
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -144,7 +142,6 @@ fun OnBoardingPageContent (
             text = page.title,
             style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.primary
-
         )
         Text(
             modifier = Modifier
@@ -165,4 +162,10 @@ fun MadeWithLoveText() {
         fontSize = 14.sp,
         color = MaterialTheme.colorScheme.secondary
     )
+}
+
+@Preview
+@Composable
+fun OnBoardingScreenPreview() {
+    OnBoardingScreen(event = {})
 }

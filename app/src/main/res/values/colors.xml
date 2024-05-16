@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="display_small">#000000</color>
     <color name="display_medium">#FF4E4B66</color>
+    <color name="shimmer">#C3C3C3</color>
 </resources>

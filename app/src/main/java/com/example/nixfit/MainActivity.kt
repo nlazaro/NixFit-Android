@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen().apply{
             setKeepOnScreenCondition{
-                viewModel.splashCondition
+                viewModel.splashCondition.value
             }
         }
         setContent {
@@ -39,10 +40,8 @@ class MainActivity : ComponentActivity() {
                         darkIcons = !isSystemInDarkMode
                     )
                 }
-                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background))
-                {
-                    val startDestination = viewModel.startDestination
-                    NavGraph(startDestination = startDestination)
+                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background).fillMaxSize()) {
+                    NavGraph(startDestination = viewModel.startDestination.value)
                 }
             }
         }

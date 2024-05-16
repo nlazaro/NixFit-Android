@@ -1,8 +1,17 @@
 # NixFit
 
-Coming soon to Android via java/kotlin
+### TODO:
+Top bar:
+- search (search icon, text, barcode)
+-- search is actually a button that leads into a search screen, and contains history of past clicked foods
+- icon/hamburger button on top left
+-- contains profile, settings
 
-V1 goals:
-1.  Bar code scanning
-2.  Calorie diary
-3.  Analytics 
+Bottom navigation
+- Dashboard (daily streak, weekly average, stats)
+- Food Log (today's diary)
+- Recipe (user inputted custom foods)
+
+Food input
+- screen after user uses barcode scanner OR searches for food and clicks it
+-- Calories, macros, serving size, time
