@@ -6,4 +6,7 @@
     <string name="next">Next</string>
     <string name="cancel">Cancel</string>
     <string name="made_with_love"><![CDATA[Made with ♥ by Nixon & Natanael]]></string>
+    <string name="dashboard">dashboard</string>
+    <string name="fooddiary">food diary</string>
+    <string name="recipe">recipe</string>
 </resources>
