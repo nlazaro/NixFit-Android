@@ -16,7 +16,9 @@ import com.example.nixfit.R
 
 
 @Composable
-fun DashboardScreen(modifier: Modifier = Modifier){
+fun DashboardScreen(
+    modifier: Modifier = Modifier,
+){
     Column(modifier = Modifier
         .fillMaxSize()){
         Text(
