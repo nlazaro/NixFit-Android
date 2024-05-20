@@ -3,7 +3,10 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
+    alias(libs.plugins.kotlin.serialization)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -21,6 +24,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
         // Loads value from apiKeys.properties file
         val apiKeysFile = project.rootProject.file("apiKeys.properties")
         val properties = Properties()
@@ -56,7 +60,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -75,6 +79,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.play.services.mlkit.barcode.scanning)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -84,17 +91,40 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     // Retrofit
     implementation(libs.retrofit)
-    implementation(libs.converter.scalars)
-    // Kotlin serialization
-    implementation(libs.kotlinx.serialization.json)
-    // Google code scanner
-    implementation(libs.play.services.code.scanner)
-    // Testing
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
+    implementation(libs.converter.gson)
     // Coil
     implementation(libs.coil.compose)
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+    // Dagger Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    // Arrow
+    implementation(libs.arrow.core)
+    implementation(libs.arrow.fx.coroutines)
+    // Google ML barcode scanner
+    implementation(libs.play.services.code.scanner)
+    // Data store
+    implementation(libs.androidx.datastore.preferences)
+    // Compose foundation
+    implementation(libs.androidx.foundation)
+    // Accompanist
+    implementation(libs.accompanist.systemuicontroller)
+    // Paging 3
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+    // Glide
+    implementation(libs.glide)
+    // Glide integration // Skip this if you don't want to use integration libraries or configure Glide.
+    annotationProcessor(libs.compiler)
+    // Splash
+    implementation(libs.androidx.core.splashscreen)
+    // Compose navigation
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+    // Material3
+    implementation(libs.material3)
 }

@@ -1,8 +1,24 @@
 # NixFit
 
-Coming soon to Android via java/kotlin
+## TODO
+> - [x] Top app bar
+- [x] Left button: navigation drawer
+- [x] Right button: barcode scanner
+- [x] Center: Search screen
 
-V1 goals:
-1.  Bar code scanning
-2.  Calorie diary
-3.  Analytics 
+> - [x] Bottom app bar
+- [x] Dashboard screen
+- [x] Food diary screen
+- [x] Recipe screen
+
+> - [ ] Database
+- [ ] Local recipe
+- [ ] Recent food api fetch history
+
+> - [ ] Screen completion
+- [ ] Dashboard
+- [ ] Food diary
+- [ ] Recipe
+- [ ] Search
+- [ ] Settings
+- [ ] Food input (appears after search and/or barcode scan)
