@@ -1,5 +1,6 @@
 package com.example.nixfit.presentation.navigation
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
@@ -10,6 +11,7 @@ import com.example.nixfit.presentation.common.AppBars
 import com.example.nixfit.presentation.onboarding.OnBoardingScreen
 import com.example.nixfit.presentation.onboarding.OnBoardingViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavGraph(
     startDestination: String

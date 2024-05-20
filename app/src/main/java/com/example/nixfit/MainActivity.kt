@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
@@ -40,7 +41,10 @@ class MainActivity : ComponentActivity() {
                         darkIcons = !isSystemInDarkMode
                     )
                 }
-                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background).fillMaxSize()) {
+                Box(modifier = Modifier
+                    .background(color = MaterialTheme.colorScheme.background).fillMaxSize()
+                    .systemBarsPadding()
+                ) {
                     NavGraph(startDestination = viewModel.startDestination.value)
                 }
             }

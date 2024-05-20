@@ -125,4 +125,6 @@ dependencies {
     // Compose navigation
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    // Material3
+    implementation(libs.material3)
 }
