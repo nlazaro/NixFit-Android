@@ -1,17 +1,24 @@
 # NixFit
 
-### TODO:
-Top bar:
-- search (search icon, text, barcode)
--- search is actually a button that leads into a search screen, and contains history of past clicked foods
-- icon/hamburger button on top left
--- contains profile, settings
+## TODO
+> - [x] Top app bar
+- [x] Left button: navigation drawer
+- [x] Right button: barcode scanner
+- [x] Center: Search screen
 
-Bottom navigation
-- Dashboard (daily streak, weekly average, stats)
-- Food Log (today's diary)
-- Recipe (user inputted custom foods)
+> - [x] Bottom app bar
+- [x] Dashboard screen
+- [x] Food diary screen
+- [x] Recipe screen
 
-Food input
-- screen after user uses barcode scanner OR searches for food and clicks it
--- Calories, macros, serving size, time
+> - [ ] Database
+- [ ] Local recipe
+- [ ] Recent food api fetch history
+
+> - [ ] Screen completion
+- [ ] Dashboard
+- [ ] Food diary
+- [ ] Recipe
+- [ ] Search
+- [ ] Settings
+- [ ] Food input (appears after search and/or barcode scan)
