@@ -16,9 +16,11 @@
 - [ ] Recent food api fetch history
 
 > - [ ] Screen completion
+- [x] Onboarding
 - [ ] Dashboard
 - [ ] Food diary
 - [ ] Recipe
 - [ ] Search
 - [ ] Settings
 - [ ] Food input (appears after search and/or barcode scan)
+- [ ] About
