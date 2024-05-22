@@ -65,6 +65,7 @@ import com.example.nixfit.presentation.recipe.RecipeScreen
 import com.example.nixfit.ui.theme.NixFitTheme
 import kotlinx.coroutines.launch
 import com.example.nixfit.presentation.common.BarcodeScannerUtil
+import com.example.nixfit.presentation.settings.SettingsScreen
 
 // Scaffold that contains top & bottom app bars
 // Top: Hamburger icon, title, barcode scanner button
@@ -109,14 +110,18 @@ fun AppBars() {
                 drawerState = drawerState,
                 drawerContent = {
                     ModalDrawerSheet {
-                        Text("Drawer title", modifier = Modifier.padding(16.dp))
+                        Text("NixFit", modifier = Modifier.padding(16.dp))
                         HorizontalDivider()
                         NavigationDrawerItem(
-                            label = { Text(text = "Drawer Item") },
+                            label = { Text(text = "Settings") },
+                            selected = false,
+                            onClick = { navController.navigate(Screen.Settings.route) }
+                        )
+                        NavigationDrawerItem(
+                            label = { Text(text = "About")},
                             selected = false,
                             onClick = { /*TODO*/ }
                         )
-                        // ...other drawer items
                     }
                 }
             ){
@@ -182,20 +187,20 @@ fun AppBars() {
                         }
                     }
 
-                    LazyColumn(
-                        contentPadding = PaddingValues(start = 16.dp, top = 72.dp, end = 16.dp, bottom = 16.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        val list = List(100) { "Text $it" }
-                        items(count = list.size) {
-                            Text(
-                                text = list[it],
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 16.dp),
-                            )
-                        }
-                    }
+//                    LazyColumn(
+//                        contentPadding = PaddingValues(start = 16.dp, top = 72.dp, end = 16.dp, bottom = 16.dp),
+//                        verticalArrangement = Arrangement.spacedBy(8.dp)
+//                    ) {
+//                        val list = List(100) { "Text $it" }
+//                        items(count = list.size) {
+//                            Text(
+//                                text = list[it],
+//                                modifier = Modifier
+//                                    .fillMaxWidth()
+//                                    .padding(horizontal = 16.dp),
+//                            )
+//                        }
+//                    }
                 }
             }
         },
@@ -245,6 +250,15 @@ fun AppBars() {
             }
             composable(Screen.Recipe.route) {
                 RecipeScreen()
+            }
+            composable(Screen.FoodInput.route){
+                //FoodInputScreen()
+            }
+            composable(Screen.Settings.route){
+                SettingsScreen()
+            }
+            composable(Screen.About.route){
+                //AboutScreen()
             }
         }
     }
