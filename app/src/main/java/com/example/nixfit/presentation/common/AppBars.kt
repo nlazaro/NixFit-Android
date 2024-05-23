@@ -3,8 +3,6 @@ package com.example.nixfit.presentation.common
 import android.content.res.Configuration
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -36,6 +34,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -85,29 +84,33 @@ fun AppBars() {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     ModalNavigationDrawer(
         drawerContent = {
-                        ModalDrawerSheet {
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Text("NixFit", modifier = Modifier.padding(16.dp))
-                            HorizontalDivider()
-                            NavigationDrawerItem(
-                                label = { Text(text = "Settings") },
-                                selected = false,
-                                onClick = {
-                                    navController.navigate(Screen.Settings.route)
-                                    scope.launch {
-                                        drawerState.close()
-                                    }
-                                          },
-                                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding))
-                            NavigationDrawerItem(
-                                label = { Text(text = "About")},
-                                selected = false,
-                                onClick = { /*TODO*/ },
-                                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding))
-                        } },
+            ModalDrawerSheet {
+                //Spacer(modifier = Modifier.height(16.dp))
+                Text("NixFit", modifier = Modifier.padding(16.dp))
+                HorizontalDivider()
+                NavigationDrawerItem(
+                    label = { Text(text = "Settings") },
+                    selected = false,
+                    onClick = {
+                        navController.navigate(Screen.Settings.route)
+                        scope.launch {
+                            drawerState.close()
+                        }
+                    },
+                    modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                )
+                NavigationDrawerItem(
+                    label = { Text(text = "About") },
+                    selected = false,
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                )
+            }
+        },
         drawerState = drawerState
     ) {
         Scaffold(
@@ -125,6 +128,17 @@ fun AppBars() {
                         ) {
                             Icon(
                                 Icons.Default.Menu, contentDescription = null
+                            )
+                        }
+                    },
+                    actions = {
+                        IconButton(
+                            onClick = {
+                                BarcodeScannerUtil.startBarcodeScanning(context)
+                            }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.barcode),
+                                contentDescription = "barcode scanner button"
                             )
                         }
                     }
@@ -163,28 +177,28 @@ fun AppBars() {
             }
         ) {
             NavHost(
-            navController = navController,
-            startDestination = Screen.Dashboard.route,
-            modifier = Modifier.padding(bottom = it.calculateBottomPadding())
-        ){
-            composable(Screen.Dashboard.route){
-                DashboardScreen()
-            }
-            composable(Screen.FoodDiary.route) {
-                FoodDiaryScreen()
-            }
-            composable(Screen.Recipe.route) {
-                RecipeScreen()
-            }
-            composable(Screen.FoodInput.route){
-                //FoodInputScreen()
-            }
-            composable(Screen.Settings.route){
-                SettingsScreen()
-            }
-            composable(Screen.About.route){
-                //AboutScreen()
-            }
+                navController = navController,
+                startDestination = Screen.Dashboard.route,
+                modifier = Modifier.padding(bottom = it.calculateBottomPadding())
+            ) {
+                composable(Screen.Dashboard.route) {
+                    DashboardScreen()
+                }
+                composable(Screen.FoodDiary.route) {
+                    FoodDiaryScreen()
+                }
+                composable(Screen.Recipe.route) {
+                    RecipeScreen()
+                }
+                composable(Screen.FoodInput.route) {
+                    //FoodInputScreen()
+                }
+                composable(Screen.Settings.route) {
+                    SettingsScreen()
+                }
+                composable(Screen.About.route) {
+                    //AboutScreen()
+                }
             }
         }
     }
@@ -192,9 +206,9 @@ fun AppBars() {
 
 
 data class BottomNavItems(
-    val title : String,
+    val title: String,
     val screen: String,
-    @DrawableRes val selectedIcon : Int
+    @DrawableRes val selectedIcon: Int
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
