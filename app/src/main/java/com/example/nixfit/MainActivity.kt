@@ -15,17 +15,46 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.nixfit.data.local.FoodDao
+import com.example.nixfit.domain.model.Nutriments
+import com.example.nixfit.domain.model.Product
 import com.example.nixfit.presentation.navigation.NavGraph
 import com.example.nixfit.ui.theme.NixFitTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel by viewModels<MainViewModel>()
+
+    @Inject
+    lateinit var dao: FoodDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        lifecycleScope.launch{
+            dao.upsert(
+                Product(
+                    productName = "Redbull",
+                    servingSize = "100",
+                    servingQuantity = "ml",
+                    nutriments = Nutriments(
+                        carbohydrates = "100",
+                        energy = "100",
+                        fat = "100",
+                        protein = "100",
+                        sodium = "100",
+                        sugar = "100"
+                    )
+                )
+            )
+        }
+
+
         installSplashScreen().apply{
             setKeepOnScreenCondition{
                 viewModel.splashCondition.value

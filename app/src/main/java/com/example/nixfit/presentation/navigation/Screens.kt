@@ -9,4 +9,7 @@ sealed class Screen(
     data object Dashboard : Screen("dashboard")
     data object FoodDiary : Screen("foodDiary")
     data object Recipe : Screen("recipe")
+    data object FoodInput : Screen("foodInput")
+    data object Settings: Screen("settings")
+    data object About : Screen("about")
 }
