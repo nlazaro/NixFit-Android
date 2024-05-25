@@ -11,16 +11,16 @@
 - [x] Food diary screen
 - [x] Recipe screen
 
-> - [ ] Database
+> - [x] Database
 - [ ] Local recipe
-- [ ] Recent food api fetch history
+- [x] Recent food api fetch history
 
 > - [ ] Screen completion
 - [x] Onboarding
-- [ ] Dashboard
-- [ ] Food diary
-- [ ] Recipe
-- [ ] Search
-- [ ] Settings
-- [ ] Food input (appears after search and/or barcode scan)
-- [ ] About
+- [x] Dashboard
+- [x] Food diary
+- [x] Recipe
+- [x] Search
+- [x] Settings
+- [x] Food input (appears after search and/or barcode scan)
+- [x] About
